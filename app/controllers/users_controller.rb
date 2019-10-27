@@ -1,24 +1,28 @@
 
 class UsersController < ApiController
 
-  before_action :authorize, only: [:index,:show, :create, :new]
+  before_action :authorize_login, only: [:index,:show, :create, :new]
   def new
     @user = User.new
   end
 
   def index
-    render json: User.all
+    @users = User.all
+    authorize [@users]
+    render json: @users
+
     # render json: { status: 'SUCCESS', message: 'loaded posts', data: User.all }
   end
 
   def show
     @user = User.find(params[:id])
+    authorize [@user]
     render json: @user
   end
 
   def create
     @user = User.new(user_params)
-
+    authorize [@user]
     # store all emails in lowercase to avoid duplicates and case-sensitive login errors:
     @user.email.downcase!
 
@@ -43,7 +47,7 @@ private
     # that can be submitted by a form to the user model #=> require(:user)
     # params.require(:user).permit(:name, :email, :password, :password_confirmation) ... Run with forms of ruby
 
-    params.permit(:name,:email, :password, :password_confirmation)
+    params.permit(:name,:email, :role, :password, :password_confirmation)
   end
 
 end

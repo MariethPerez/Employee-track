@@ -1,5 +1,5 @@
 class DialingsController < ApiController
-    # before_action :authorize, only: [:index,:show, :create, :new]
+   before_action :authorize_login, only: [:index,:show, :create, :update]
   def index
     render json: Dialing.all
   end
