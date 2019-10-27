@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
 
+  # get 'dialings/index'
+  # get 'dialings/show'
+  # get 'dialings/create'
+  # get 'dialings/update'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   root to: 'pages#secret'
@@ -22,6 +26,7 @@ Rails.application.routes.draw do
 
   scope '/api' do
     resources :users
+    resources :dialings
   end
 
 
