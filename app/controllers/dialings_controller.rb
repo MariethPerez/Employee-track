@@ -7,7 +7,6 @@ class DialingsController < ApiController
   end
 
   def show
-
     @dialing = Dialing.find(params[:id])
     authorize [@dialing]
     render json: @dialing
