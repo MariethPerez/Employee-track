@@ -1,6 +1,6 @@
 class DialingsController < ApiController
    before_action :authorize_login, only: [:index,:show, :create, :update]
-   
+
   def index
     @dialings = Dialing.all
     authorize [@dialings]
@@ -32,6 +32,22 @@ class DialingsController < ApiController
     else
       render json:  @dialing.errors, status: :bad_request
     end
+  end
+
+  #reports
+  def metrics_late_employees
+    # http://localhost:3000/api/metrics_late_employees/?start_date=2019-10-01&end_date=2019-10-31
+     @dialings = EmployeeQueries.new.late_employees(params[:start_date],params[:end_date])
+     authorize [@dialings]
+     render json: @dialings, status: :ok
+  end
+
+  def metrics_overtime_employees
+    # http://localhost:3000/api/metrics_overtime_employees/?start_date=2019-10-01&end_date=2019-10-31
+    @dialings = EmployeeQueries.new.overtime_employees(params[:start_date],params[:end_date])
+    authorize [@dialings]
+    render json: @dialings, status: :ok
+
   end
 
   private

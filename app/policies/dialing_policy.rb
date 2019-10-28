@@ -22,6 +22,14 @@ class DialingPolicy < ApplicationPolicy
     user.has_role?('admin')
   end
 
+  def metrics_late_employees?
+    user.has_role?('admin')
+  end
+
+  def metrics_overtime_employees?
+    user.has_role?('admin')
+  end
+
   # def update?
   #   current_user.id == user.id || current_user.has_role?('admin')
   # end

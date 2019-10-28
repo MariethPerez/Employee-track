@@ -23,6 +23,8 @@ Rails.application.routes.draw do
     resources :users
     resources :dialings
     get "/metrics_entry_exit/:id", to: "users#metrics_entry_exit"
+    get "/metrics_late_employees", to: "dialings#metrics_late_employees"
+    get "/metrics_overtime_employees", to: "dialings#metrics_overtime_employees"
   end
 
 end
