@@ -1,5 +1,6 @@
 class DialingsController < ApiController
    before_action :authorize_login, only: [:index,:show, :create, :update]
+   
   def index
     @dialings = Dialing.all
     authorize [@dialings]
@@ -10,6 +11,7 @@ class DialingsController < ApiController
     @dialing = Dialing.find(params[:id])
     authorize [@dialing]
     render json: @dialing
+
   end
 
   def create

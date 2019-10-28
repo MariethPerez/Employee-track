@@ -1,10 +1,9 @@
 class DialingPolicy < ApplicationPolicy
-  attr_reader :current_user, :user
+  attr_reader :user, :dialing
 
   def initialize(user, dialing)
     @user = user
     @dialing = dialing
-
   end
 
   def index?

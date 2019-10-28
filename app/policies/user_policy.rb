@@ -18,6 +18,10 @@ class UserPolicy < ApplicationPolicy
     current_user.has_role?('admin')
   end
 
+  def metrics_entry_exit?
+    current_user.id == user.id || current_user.has_role?('admin')
+  end
+
   # def update?
   #   current_user.id == user.id || current_user.has_role?('admin')
   # end

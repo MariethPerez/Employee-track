@@ -40,14 +40,19 @@ class UsersController < ApiController
     end
   end
 
+  def metrics_entry_exit
+    # http://localhost:3000/api/metrics_entry_exit/2/?start_date=2019-10-01&end_date=2019-12-31
+     @dialings = EmployeeQueries.new.entry_exit(params[:id],params[:start_date],params[:end_date])
+     @user=User.find(params[:id])
+     authorize [@user]
+     render json: @dialings, status: :ok
+  end
+
 private
 
   def user_params
-    # strong parameters - whitelist of allowed fields #=> permit(:name, :email, ...)
-    # that can be submitted by a form to the user model #=> require(:user)
-    # params.require(:user).permit(:name, :email, :password, :password_confirmation) ... Run with forms of ruby
-
     params.permit(:name,:email, :role, :password, :password_confirmation)
+    
   end
 
 end
