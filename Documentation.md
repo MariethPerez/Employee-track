@@ -17,12 +17,10 @@ You need to install the Gemfile
 
 ```
 bundle install
-
 ```
 
 ```
 yarn install
-
 ```
 
 Now run the migrations and seeds
@@ -30,7 +28,6 @@ Now run the migrations and seeds
 ```
 rails db:setup
 ```
-
 
 
 ## This is the list user's

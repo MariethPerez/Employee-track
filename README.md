@@ -2,9 +2,9 @@
 
 ## Documentation
 
-Read more [here]
+Read more [here](https://github.com/MariethPerez/Employee-track/blob/master/Documentation.md)
 
-## Requerimientos funcionales
+## Functional requirements
 
 - Login of company administrator
 
