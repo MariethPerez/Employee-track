@@ -45,11 +45,11 @@ RSpec.describe Api::UsersController, type: :controller do
       expect(expected_user["id"]).to eq(@user.id)
     end
 
-    # it 'returns http status not found' do
-    #   get :show, params: { id: 80 }
-    #   # expect(response.status).to eq 404
-    #   # expect(response).to have_http_status(:not_found)
-    # end
+    it 'returns http status not found' do
+      get :show, params: { id: 80 }
+      # expect(response.status).to eq 404
+      expect(response).to have_http_status(:not_found)
+    end
   end
 
   describe 'POST create' do

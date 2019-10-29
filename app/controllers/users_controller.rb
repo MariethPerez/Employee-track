@@ -46,6 +46,10 @@ class UsersController < ApiController
      render json: @dialings, status: :ok
   end
 
+  rescue_from ActiveRecord::RecordNotFound do |e|
+    render json: { message: e.message }, status: :not_found
+  end
+
 private
 
   def user_params

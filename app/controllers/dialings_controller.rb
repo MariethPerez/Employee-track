@@ -51,6 +51,10 @@ class DialingsController < ApiController
 
   end
 
+  rescue_from ActiveRecord::RecordNotFound do |e|
+    render json: { message: e.message }, status: :not_found
+  end
+
   private
   def dialing_params
     params.permit(:date, :category, :hour, :minute, :user_id)

@@ -54,11 +54,11 @@ RSpec.describe Api::DialingsController, type: :controller do
       expect(expected_user["id"]).to eq(@dialing.id)
     end
 
-    # it 'returns http status not found' do
-    #   get :show, params: { user_id: @user.id, id: 'xxx' }
-    #   # expect(response.status).to eq 404
-    #   expect(response).to have_http_status(:not_found)
-    # end
+    it 'returns http status not found' do
+      get :show, params: { user_id: @user.id, id: 'xxx' }
+      # expect(response.status).to eq 404
+      expect(response).to have_http_status(:not_found)
+    end
   end
 
   describe 'POST create' do
