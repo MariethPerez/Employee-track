@@ -3,7 +3,7 @@ class User < ApplicationRecord
   has_secure_password
   validates :email, presence: true, uniqueness: true
 
-    def has_role?(role)
+  def has_role?(role)
     self.role == role
   end
 end

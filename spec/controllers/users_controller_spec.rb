@@ -16,7 +16,9 @@ RSpec.describe Api::UsersController, type: :controller do
       hour: 9 ,
       minute: 15
     )
+    sign_in_as(@user)
   end
+
 
   # List users
   describe 'GET index' do

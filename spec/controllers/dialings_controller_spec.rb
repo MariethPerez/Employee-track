@@ -1,6 +1,7 @@
 require 'rails_helper'
 RSpec.describe Api::DialingsController, type: :controller do
 
+
   before do
     @user = User.create(
       name: 'Emilyghen',
@@ -25,10 +26,12 @@ RSpec.describe Api::DialingsController, type: :controller do
       hour: 19 ,
       minute: 15
     )
+    sign_in_as(@user)
   end
 
+
   # List dialings
-  describe 'GET index' do
+  describe 'GET index'  do
     it 'returns http status ok' do
       get :index
       p response.body
