@@ -1,5 +1,4 @@
 class DialingsController < ApiController
-  #Uncoment TO-DO authorize_login AND authorize
   before_action :authorize_login, only: [:index,:show, :create, :update, :metrics_late_employees, :metrics_overtime_employees ]
 
   def index
