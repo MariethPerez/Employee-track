@@ -7,8 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 @user_1= User.create( name: 'Marieth', email: 'marieth@gmail.com',role: 'admin', password: '123456')
-@user_2= User.create( name: 'Juan', email: 'juan@gmail.com',role: 'Empleado',password: '123456')
-@user_3= User.create( name: 'Liz', email: 'lis@gmail.com',role: 'Empleado', password: '123456')
+@user_2= User.create( name: 'Juan', email: 'juan@gmail.com',role: 'empleado',password: '123456')
+@user_3= User.create( name: 'Liz', email: 'lis@gmail.com',role: 'empleado', password: '123456')
 
 dialing_1 = Dialing.create( date: "2019-10-01",user_id: 1, category: "Entry", hour: 9 , minute: 0)
 dialing_2 = Dialing.create( date: "2019-10-01",user_id: 1, category: "Exit", hour: 18, minute: 30)
