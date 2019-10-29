@@ -1,24 +1,29 @@
-# README
+# Rails Booking Clon
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Documentation
 
-Things you may want to cover:
+Read more [here]
 
-* Ruby version
+## Requerimientos funcionales
 
-* System dependencies
+- Login of company administrator
 
-* Configuration
+- Login of employee
 
-* Database creation
+- The administrator can mark the entry and exit of their employees
 
-* Database initialization
+- The administrator manages the reports of entry and exit of his employees
 
-* How to run the test suite
+- The administrator manages employee information
 
-* Services (job queues, cache servers, search engines, etc.)
+- Employee check your entry and exit report
 
-* Deployment instructions
 
-* ...
+## Resources
+
+- User (name, email, role, password)
+- Dialing (date, category, hour, minute, user_id)
+
+
+
+

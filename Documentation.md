@@ -1,5 +1,16 @@
 # Documentation
 
+Pre-Requisites
+
+## Pre-Requisites
+
+    Ruby version 2.6.4
+    Rails version 5.2.3
+    Yarn version 1.17.3
+    Node version 12.9.1
+    Postgres version 11.5
+
+
 ## How to install
 
 You need to install the Gemfile
@@ -9,14 +20,18 @@ bundle install
 
 ```
 
+```
+yarn install
+
+```
+
 Now run the migrations and seeds
 
 ```
 rails db:setup
 ```
 
-after_create :notification_booking_created, :reservation_reminde
-```
+
 
 ## This is the list user's
 
