@@ -1,28 +1,26 @@
 
 class UsersController < ApiController
-
-  before_action :authorize_login, only: [:index,:show, :create, :new]
+  #Uncoment TO-DO authorize_login AND authorize
+  # before_action :authorize_login, only: [:index,:show, :create, :new]
   def new
     @user = User.new
   end
 
   def index
     @users = User.all
-    authorize [@users]
+    # authorize [@users]
     render json: @users
-
-    # render json: { status: 'SUCCESS', message: 'loaded posts', data: User.all }
   end
 
   def show
     @user = User.find(params[:id])
-    authorize [@user]
+    # authorize [@user]
     render json: @user
   end
 
   def create
     @user = User.new(user_params)
-    authorize [@user]
+    # authorize [@user]
     # store all emails in lowercase to avoid duplicates and case-sensitive login errors:
     @user.email.downcase!
 
@@ -44,7 +42,7 @@ class UsersController < ApiController
     # http://localhost:3000/api/metrics_entry_exit/2/?start_date=2019-10-01&end_date=2019-12-31
      @dialings = EmployeeQueries.new.entry_exit(params[:id],params[:start_date],params[:end_date])
      @user=User.find(params[:id])
-     authorize [@user]
+    #  authorize [@user]
      render json: @dialings, status: :ok
   end
 
@@ -52,7 +50,7 @@ private
 
   def user_params
     params.permit(:name,:email, :role, :password, :password_confirmation)
-    
+
   end
 
 end
