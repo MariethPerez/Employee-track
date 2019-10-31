@@ -1,7 +1,6 @@
 require 'rails_helper'
 RSpec.describe Api::DialingsController, type: :controller do
 
-
   before do
     @user = User.create(
       name: 'Emilyghen',
@@ -15,7 +14,7 @@ RSpec.describe Api::DialingsController, type: :controller do
       date: "2019-10-01",
       user_id: @user.id,
       category: "Entry",
-      hour: 9 ,
+      hour: 9,
       minute: 15
     )
 
@@ -23,7 +22,7 @@ RSpec.describe Api::DialingsController, type: :controller do
       date: "2019-10-01",
       user_id: @user.id,
       category: "Exit",
-      hour: 19 ,
+      hour: 19,
       minute: 15
     )
     sign_in_as(@user)
@@ -63,6 +62,7 @@ RSpec.describe Api::DialingsController, type: :controller do
       expect(response).to have_http_status(:not_found)
     end
   end
+
 
   describe 'POST create' do
     it 'returns http status created' do

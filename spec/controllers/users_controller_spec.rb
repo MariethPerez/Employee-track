@@ -2,21 +2,29 @@ require 'rails_helper'
 RSpec.describe Api::UsersController, type: :controller do
 
   before do
-    @user = User.create(
+    @user_admin = User.create(
       name: 'Emilyghen',
       email: 'emilyghen@example.com',
       role: 'admin',
       password: '123456',
       password_confirmation: '123456'
     )
-    @dialing = Dialing.create(
+
+    @user_employee = User.create(
+      name: 'Alina',
+      email: 'alina@example.com',
+      role: 'empleado',
+      password: '123456',
+      password_confirmation: '123456'
+    )
+    @dialing_entry = Dialing.create(
       date: "2019-10-01",
-      user_id: @user.id,
+      user_id: @user_admin.id,
       category: "Entry",
       hour: 9 ,
       minute: 15
     )
-    sign_in_as(@user)
+    sign_in_as(@user_admin)
   end
 
 
@@ -30,21 +38,21 @@ RSpec.describe Api::UsersController, type: :controller do
     it 'render json with all users' do
       get :index
       users = JSON.parse(response.body)
-      expect(users.size).to eq 1
+      expect(users.size).to eq 2
     end
   end
 
   #User detail
   describe 'GET show' do
     it 'returns http status ok' do
-      get :show, params: { id: @user }
+      get :show, params: { id: @user_admin }
       expect(response).to have_http_status(:ok)
     end
 
     it 'render the correct user' do
-      get :show, params: { id: @user }
+      get :show, params: { id: @user_admin }
       expected_user = JSON.parse(response.body)
-      expect(expected_user["id"]).to eq(@user.id)
+      expect(expected_user["id"]).to eq(@user_admin.id)
     end
 
     it 'returns http status not found' do
@@ -53,6 +61,14 @@ RSpec.describe Api::UsersController, type: :controller do
       expect(response).to have_http_status(:not_found)
     end
   end
+
+    #User detail
+  # describe 'GET show' do
+  #   it 'returns http status ok' do
+  #     get :show, params: { id: @user_admin }
+  #     expect(response.status).to eq 403
+  #   end
+  # end
 
   describe 'POST create' do
     it 'returns http status created' do
@@ -84,7 +100,7 @@ RSpec.describe Api::UsersController, type: :controller do
   describe 'GET metrics_entry_exit' do
     it 'returns http status ok' do
       get :metrics_entry_exit, params: {
-        id: @user.id,
+        id: @user_admin.id,
         start_date: "2019-10-01",
         end_date: "2019-10-30"
       }
@@ -92,7 +108,7 @@ RSpec.describe Api::UsersController, type: :controller do
     end
     it 'render json with all metrics_entry_exit' do
       get :metrics_entry_exit, params: {
-        id: @user.id,
+        id: @user_admin.id,
         start_date: "2019-10-01",
         end_date: "2019-10-30"
       }
@@ -100,6 +116,4 @@ RSpec.describe Api::UsersController, type: :controller do
       expect(dialings.size).to eq 1
     end
   end
-
-
 end
